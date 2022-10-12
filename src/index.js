@@ -1,8 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "./store";
+
+const store = configureStore();
 
 function Root() {
   return (
@@ -14,7 +18,9 @@ function Root() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Root />
+    <Provider store={store}>
+      <Root />
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
