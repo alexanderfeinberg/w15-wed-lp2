@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { deleteBookAction } from "../store/booksReducer";
+import { useDispatch } from "react-redux";
 
 const BookIndexItem = ({ book }) => {
-  console.log("BOOK ", book);
+  const dispatch = useDispatch();
   const deleteBook = (e) => {
     e.preventDefault();
+    dispatch(deleteBookAction(book));
   };
 
   return (
