@@ -4,6 +4,7 @@ const LOAD_BOOKS = "books/loadBooks";
 const LOAD_BOOK = "books/loadBook";
 const DELETE_BOOK = "books/deleteBook";
 const ADD_BOOK = "books/addBook";
+const RESET_DATA = "books/reset";
 
 export const loadBooks = () => {
   return { type: LOAD_BOOKS };
@@ -19,6 +20,10 @@ export const loadBook = (book) => {
 
 export const addBook = (book) => {
   return { type: ADD_BOOK, book: book };
+};
+
+export const resetData = () => {
+  return { type: RESET_DATA };
 };
 
 const normalizeData = (data = books) => {
@@ -41,6 +46,8 @@ const booksReducer = (state = initialState, action) => {
       return { ...state };
     case ADD_BOOK:
       return { ...state, [action.book.id]: action.book };
+    case RESET_DATA:
+      return normalizeData();
     default:
       return state;
   }

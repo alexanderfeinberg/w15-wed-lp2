@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { loadBooks } from "../store/booksReducer";
 import BookIndexItem from "./BookIndexItem";
 import { useSelector, useDispatch } from "react-redux";
+import { resetData } from "../store/booksReducer";
 
 const BooksIndex = () => {
   let dispatch = useDispatch();
@@ -17,6 +18,7 @@ const BooksIndex = () => {
 
   const resetBookData = (e) => {
     e.preventDefault();
+    dispatch(resetData());
   };
 
   return (
