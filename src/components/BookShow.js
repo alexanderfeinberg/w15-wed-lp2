@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom';
-
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 const BookShow = () => {
   const { bookId } = useParams();
-  const book = {};
+  const book = useSelector((state) => state.books[bookId]);
+  console.log(book);
 
   const changeCheckOut = (e) => {
     e.preventDefault();
@@ -11,19 +12,19 @@ const BookShow = () => {
   return (
     <section>
       ID: {book.id}
-      <br/>
+      <br />
       Title: {book.title}
-      <br/>
+      <br />
       Author: {book.author}
-      <br/>
+      <br />
       <button onClick={changeCheckOut}>
         {book.checkedOut === true && "Return"}
         {book.checkedOut === false && "Check Out"}
       </button>
-      <br/>
+      <br />
       <Link to="/">Back to Books List</Link>
     </section>
   );
-}
+};
 
 export default BookShow;
